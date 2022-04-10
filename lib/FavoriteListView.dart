@@ -7,7 +7,7 @@ class FavoriteListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('リスト表画面'),
+        child: Text('お気に入りリスト表画面'),
       ),
     );
   }

@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'FavoriteListView.dart';
-import 'FooterView.dart';
+import 'package:list_sample/views_screens/root_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        brightness: Brightness.light,
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          },
+        ),
       ),
-      // home: const MainPage(title: 'Flutter List Sample App'),
-      routes: <String, WidgetBuilder> {
-        '/home':(BuildContext context) => ListView(),
-        '/favoritelistview':(BuildContext context) => const FavoriteListView()
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/': (_) => RootPage(),
       },
-      home: Scaffold(
-        // appBar: Header(),
-        body: ListView(),
-        bottomNavigationBar: const Footer(),
-      ),
     );
   }
 }

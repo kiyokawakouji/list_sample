@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
 
   final _pages = <Widget>[
     const PhotoListView(),
-    const FavoriteListView(),
+    FavoriteListView(),
   ];
 
   void _onTapItem(int index) {

@@ -1,31 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:list_sample/views_screens/root_page.dart';
+import 'package:list_sample/home.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  static const String _title = 'Flutter Code Sample';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: _title,
       theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: <TargetPlatform, PageTransitionsBuilder>{
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-          },
-        ),
+        primarySwatch: Colors.pink,
       ),
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{
-        '/': (_) => RootPage(),
-      },
+      home: const Home(),
     );
   }
 }

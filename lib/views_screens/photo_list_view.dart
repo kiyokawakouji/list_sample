@@ -5,6 +5,9 @@ class PhotoListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sizeDevice = MediaQuery.of(context).size;
+    final itemHeight = (sizeDevice.height - kToolbarHeight - 24) / 4;
+    final itemWidth = sizeDevice.width / 3;
 
     final images = <String>[
       'assets/images/img1.png',
@@ -27,10 +30,23 @@ class PhotoListView extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: GridView.builder(
             itemCount: images.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              childAspectRatio: itemWidth / itemHeight,
+            ),
             itemBuilder: (context, index) {
-              return Image.asset(images[index], fit: BoxFit.cover);
+              return Container(
+                color: Colors.pink,
+                child: Column(
+                  children: [
+                    Image.asset(images[index], fit: BoxFit.cover),
+                    Text('$index'),
+                  ],
+                ),
+              );
             },
           ),
         ),

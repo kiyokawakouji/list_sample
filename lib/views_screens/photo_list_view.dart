@@ -39,7 +39,7 @@ class PhotoListView extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return Container(
-                color: Colors.pink,
+                color: Colors.blueGrey,
                 child: Column(
                   children: [
                     Image.asset(images[index], fit: BoxFit.cover),

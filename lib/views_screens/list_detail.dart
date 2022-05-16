@@ -9,10 +9,14 @@ class ListDetailView extends StatelessWidget {
       body: Center(
         child: GestureDetector(
           child: Center(
-            child: Container(
-              width: 200,
-              height: 200,
-              child: const Text('詳細画面', textAlign: TextAlign.center),
+            child: Hero(
+              tag: 'boxHero',
+              child: Container(
+                width: 200,
+                height: 200,
+                color: Colors.green,
+                child: const Text('詳細画面', textAlign: TextAlign.center),
+              ),
             ),
           ),
           onTap: () {

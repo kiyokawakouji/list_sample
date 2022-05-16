@@ -42,10 +42,13 @@ class PhotoListView extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 color: Colors.blueGrey,
-                child: Column(children: [
-                  Image.asset(images[index], fit: BoxFit.cover),
-                  Text('$index'),
-                ]),
+                child: Hero(
+                  tag: '$index',
+                  child: Column(children: [
+                    Image.asset(images[index], fit: BoxFit.cover),
+                    Text('$index'),
+                  ]),
+                ),
               );
             },
           ),

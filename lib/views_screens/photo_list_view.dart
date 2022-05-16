@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'list_detail.dart';
+
 class PhotoListView extends StatelessWidget {
   const PhotoListView({Key? key}) : super(key: key);
 
@@ -25,7 +27,7 @@ class PhotoListView extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: SafeArea(
+      body: GestureDetector(
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: GridView.builder(
@@ -48,6 +50,12 @@ class PhotoListView extends StatelessWidget {
             },
           ),
         ),
+        onTap: () {
+          Navigator.push<void>(
+            context,
+            MaterialPageRoute(builder: (context) => ListDetailView()),
+          );
+        },
       ),
     );
   }

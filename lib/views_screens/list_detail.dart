@@ -5,9 +5,20 @@ class ListDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('リスト詳細画面'),
+        child: GestureDetector(
+          child: Center(
+            child: Container(
+              width: 200,
+              height: 200,
+              child: const Text('詳細画面', textAlign: TextAlign.center),
+            ),
+          ),
+          onTap: () {
+            Navigator.pop<void>(context);
+          },
+        ),
       ),
     );
   }

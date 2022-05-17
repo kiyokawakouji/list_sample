@@ -42,11 +42,19 @@ class PhotoListView extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 constraints: const BoxConstraints.expand(),
-                color: Colors.blueGrey,
+                color: Colors.white,
                 child: Hero(
                   tag: '$index',
-                  child: Column(children: [
-                    Image.network(images[index], height: 200, fit: BoxFit.cover),
+                  child: Column(children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        images[index],
+                        height: itemHeight * 1.3,
+                        width: itemWidth * 2,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     Text('$index'),
                   ]),
                 ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ListDetailView extends StatelessWidget {
-  const ListDetailView({Key? key}) : super(key: key);
+  const ListDetailView({Key? key, required this.index}) : super(key: key);
+  // TODO(k): 画面遷移時にテキストが表示される問題を解消する
+  final String index;
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +12,12 @@ class ListDetailView extends StatelessWidget {
         child: GestureDetector(
           child: Center(
             child: Hero(
-              tag: 'boxHero',
+              tag: index,
               child: Container(
                 width: 200,
                 height: 200,
                 color: Colors.green,
+                // TODO(k): 受け取った画像を表示する
                 child: const Text('詳細画面', textAlign: TextAlign.center),
               ),
             ),

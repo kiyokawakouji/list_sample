@@ -8,7 +8,7 @@ class PhotoListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeDevice = MediaQuery.of(context).size;
-    final itemHeight = (sizeDevice.height - kToolbarHeight - 24) / 5;
+    final itemHeight = (sizeDevice.height - kToolbarHeight - 24) / 3;
     final itemWidth = sizeDevice.width / 3;
 
     final images = <String>[
@@ -27,22 +27,25 @@ class PhotoListView extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: GestureDetector(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: GridView.builder(
-            itemCount: images.length,
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: itemWidth / itemHeight,
-            ),
-            itemBuilder: (context, index) {
-              return Container(
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: GridView.builder(
+          itemCount: images.length,
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: itemWidth / itemHeight * 1.5,
+          ),
+          itemBuilder: (context, index) {
+            // TODO(k): Container → Heroに変える
+            return GestureDetector(
+              child: Container(
                 constraints: const BoxConstraints.expand(),
-                color: Colors.white,
+                color: Colors.red,
+                height: itemHeight,
+                width: itemWidth * 2,
                 child: Hero(
                   tag: '$index',
                   child: Column(children: <Widget>[
@@ -50,24 +53,26 @@ class PhotoListView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
                         images[index],
-                        height: itemHeight * 1.3,
-                        width: itemWidth * 2,
+                        // height: itemHeight,
+                        // width: itemWidth * 2,
                         fit: BoxFit.cover,
                       ),
                     ),
+                    // TODO(k): 三点リーダーを表示させる
                     Text('$index'),
                   ]),
                 ),
-              );
-            },
-          ),
+              ),
+              onTap: () {
+                Navigator.push<void>(
+                  context,
+                  // TODO(k): 画像のurlを渡す
+                  MaterialPageRoute(builder: (context) => ListDetailView(index: '$index')),
+                );
+              },
+            );
+          },
         ),
-        onTap: () {
-          Navigator.push<void>(
-            context,
-            MaterialPageRoute(builder: (context) => ListDetailView()),
-          );
-        },
       ),
     );
   }

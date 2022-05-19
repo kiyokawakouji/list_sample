@@ -12,13 +12,13 @@ class ListDetailView extends StatelessWidget {
         child: GestureDetector(
           child: Center(
             child: Hero(
-              tag: index,
+              tag: '$index',
               child: Container(
                 width: 200,
                 height: 200,
                 color: Colors.green,
                 // TODO(k): 受け取った画像を表示する
-                child: const Text('詳細画面', textAlign: TextAlign.center),
+                child: Text(index, textAlign: TextAlign.center),
               ),
             ),
           ),

@@ -39,35 +39,43 @@ class PhotoListView extends StatelessWidget {
             childAspectRatio: itemWidth / itemHeight * 1.5,
           ),
           itemBuilder: (context, index) {
-            // TODO(k): Container → Heroに変える
             return GestureDetector(
-              child: Container(
-                constraints: const BoxConstraints.expand(),
-                color: Colors.red,
-                height: itemHeight,
-                width: itemWidth * 2,
-                child: Hero(
-                  tag: '$index',
-                  child: Column(children: <Widget>[
-                    ClipRRect(
+              child: Hero(
+                tag: '$index',
+                // child: Container(
+                //   constraints: const BoxConstraints.expand(),
+                //   color: Colors.red,
+                //   height: itemHeight,
+                //   width: itemWidth * 2,
+                child: Column(children: <Widget>[
+                  Expanded(
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
                         images[index],
-                        // height: itemHeight,
-                        // width: itemWidth * 2,
+                        height: itemHeight,
+                        width: itemWidth * 2,
                         fit: BoxFit.cover,
                       ),
                     ),
-                    // TODO(k): 三点リーダーを表示させる
-                    Text('$index'),
-                  ]),
-                ),
+                  ),
+                  // TODO(k): 三点リーダーを表示させる
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('$index'),
+                      const Icon(Icons.more_horiz),
+                    ],
+                  ),
+                ]),
               ),
+              // ),
               onTap: () {
                 Navigator.push<void>(
                   context,
                   // TODO(k): 画像のurlを渡す
-                  MaterialPageRoute(builder: (context) => ListDetailView(index: '$index')),
+                  MaterialPageRoute(
+                      builder: (context) => ListDetailView(index: '$index')),
                 );
               },
             );
@@ -77,3 +85,20 @@ class PhotoListView extends StatelessWidget {
     );
   }
 }
+
+// class _Tile extends StatelessWidget {
+//   _Tile(this.images);
+//
+//   final String images;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: const EdgeInsets.all(10),
+//       child: ClipRRect(
+//         borderRadius: const BorderRadius.all(Radius.circular(5)),
+//         child: Image.network(images),
+//       ),
+//     );
+//   }
+// }

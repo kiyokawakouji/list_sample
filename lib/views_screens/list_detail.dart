@@ -13,12 +13,9 @@ class ListDetailView extends StatelessWidget {
           child: Center(
             child: Hero(
               tag: index,
-              child: Container(
-                width: 200,
-                height: 200,
-                color: Colors.green,
+              child: SizedBox(
                 // TODO(k): 受け取った画像を表示する
-                child: Text(index, textAlign: TextAlign.center),
+                child: Image.asset('assets/images/img1.png'),
               ),
             ),
           ),

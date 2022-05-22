@@ -42,11 +42,6 @@ class PhotoListView extends StatelessWidget {
             return GestureDetector(
               child: Hero(
                 tag: '$index',
-                // child: Container(
-                //   constraints: const BoxConstraints.expand(),
-                //   color: Colors.red,
-                //   height: itemHeight,
-                //   width: itemWidth * 2,
                 child: Column(children: <Widget>[
                   Expanded(
                     child: ClipRRect(
@@ -85,20 +80,3 @@ class PhotoListView extends StatelessWidget {
     );
   }
 }
-
-// class _Tile extends StatelessWidget {
-//   _Tile(this.images);
-//
-//   final String images;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.all(10),
-//       child: ClipRRect(
-//         borderRadius: const BorderRadius.all(Radius.circular(5)),
-//         child: Image.network(images),
-//       ),
-//     );
-//   }
-// }

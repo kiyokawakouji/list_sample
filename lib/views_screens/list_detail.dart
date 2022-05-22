@@ -12,7 +12,7 @@ class ListDetailView extends StatelessWidget {
         child: GestureDetector(
           child: Center(
             child: Hero(
-              tag: '$index',
+              tag: index,
               child: Container(
                 width: 200,
                 height: 200,

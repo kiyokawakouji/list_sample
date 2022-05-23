@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'list_detail.dart';
@@ -46,8 +47,8 @@ class PhotoListView extends StatelessWidget {
                   Expanded(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        images[index],
+                      child: CachedNetworkImage(
+                        imageUrl: images[index],
                         height: itemHeight,
                         width: itemWidth * 2,
                         fit: BoxFit.cover,
@@ -70,7 +71,11 @@ class PhotoListView extends StatelessWidget {
                   context,
                   // TODO(k): 画像のurlを渡す
                   MaterialPageRoute(
-                      builder: (context) => ListDetailView(index: '$index')),
+                    builder: (context) => ListDetailView(
+                      index: index,
+                      images: images.toString(),
+                    ),
+                  ),
                 );
               },
             );

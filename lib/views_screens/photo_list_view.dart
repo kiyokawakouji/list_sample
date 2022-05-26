@@ -73,7 +73,7 @@ class PhotoListView extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => ListDetailView(
                       index: index,
-                      images: images.toString(),
+                      images: images[index],
                     ),
                   ),
                 );

@@ -31,7 +31,7 @@ class ListDetailView extends StatelessWidget {
                   tag: index,
                   // TODO(k): 受け取った画像を表示する
                   child: CachedNetworkImage(
-                    imageUrl: 'https://picsum.photos/250?image=9',
+                    imageUrl: images,
                     placeholder: (context, url) =>
                         const CircularProgressIndicator(),
                     height: 400,
